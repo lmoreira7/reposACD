@@ -14,7 +14,7 @@ public class Ordenadores {
 
             boolean trocou = false;
 
-            for (int j = 1; j < n; j++) {
+            for (int j = 1; j < n-i; j++) {
 
                 if (vet[j].compareTo(vet[j - 1]) < 0) {    // Compara os pares
                     auxVar = vet[j - 1];
@@ -87,17 +87,12 @@ public class Ordenadores {
 
                     vet[j] = vet[j - h];
                     j = j - h;
-
-                    if (j <= h) {
-                        break;
-                    }
                 }
 
                 vet[j] = auxVal;
             }
 
-            h = h / 3;
-
+            h /= 3;
         }
     }
 
@@ -118,14 +113,14 @@ public class Ordenadores {
 
     public static <T extends Comparable<T>> void heapSort(T[] vet, int n) {
 
-        for (int i = (n / 2); i >= 1; i--) {
+        for (int i = (n / 2-1); i >= 0; i--) {
             maxHeap(vet, n, i);
         }
 
-        for (int i = n; i > 1; i--) {
+        for (int i = n-1; i > 0; i--) {
 
-            swap(vet, 0, i - 1);
-            maxHeap(vet, i - 1, 1);
+            swap(vet, 0, i);
+            maxHeap(vet, i, 0);
 
         }
     }
@@ -144,7 +139,7 @@ public class Ordenadores {
     public static <T extends Number & Comparable<T>> void countingSort(T[] vet, int n, int k) {
 
         @SuppressWarnings("unchecked")
-        T[] B = (T[]) new Number[n + 1];
+        T[] B = (T[]) java.lang.reflect.Array.newInstance(vet.getClass().getComponentType(), n);
         int[] C = new int[k + 1];
 
         for (int i = 0; i <= k; i++) {
@@ -153,7 +148,7 @@ public class Ordenadores {
 
         for (int j = 0; j < n; j++) {
             int value = vet[j].intValue();
-            C[value] = C[value] + 1;
+            C[value]++;
         }
 
         for (int i = 1; i <= k; i++) {
@@ -172,22 +167,12 @@ public class Ordenadores {
 
     }
 
-    public static <T extends Number & Comparable<T>> void radixSort(T[] vet, int n) {
+    public static void radixSort(Integer[] vet, int n) {
 
-        Integer[] intVet = new Integer[n];
-
-        for(int i = 0; i < n; i++) {
-            intVet[i] = vet[i].intValue();
-        }
-
-        int maxValue = getMaxValue(intVet);
+        int maxValue = getMaxValue(vet);
 
         for(int exp = 1; maxValue / exp > 0; exp *= 10) {
-            countingSortByDigit(intVet, n, exp);
-        }
-
-        for(int i = 0; i < n; i++) {
-            vet[i] = (T) Integer.valueOf(intVet[i]);
+            countingSortByDigit(vet, n, exp);
         }
     }
 
@@ -289,23 +274,19 @@ public class Ordenadores {
     private static <T extends Comparable<T>> void maxHeap(T[] vet, int n, int i) {
 
         int root = i;
-        int left = 2 * i;
-        int right = 2 * i + 1;
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
 
-        int rootIndex = i - 1;
-        int leftIndex = left - 1;
-        int rightIndex = right - 1;
-
-        if (left <= n && vet[leftIndex].compareTo(vet[rootIndex]) > 0) {
+        if (left < n && vet[left].compareTo(vet[root]) > 0) {
             root = left;
         }
 
-        if (right <= n && vet[rightIndex].compareTo(vet[root - 1]) > 0) {
+        if (right < n && vet[right].compareTo(vet[root]) > 0) {
             root = right;
         }
 
         if (root != i) {
-            swap(vet, rootIndex, root - 1);
+            swap(vet, i, root);
             maxHeap(vet, n, root);
         }
     }
@@ -364,33 +345,32 @@ public class Ordenadores {
         return maxValue;
     }
 
-    private static <T extends Number & Comparable<T>> void countingSortByDigit(T[] vet, int n, int exp) {
+    private static void countingSortByDigit(Integer[] vet, int n, int exp) {
 
-        @SuppressWarnings("unchecked")
-        T[] B = (T[]) new Number[n];
-        int[] C = new int[10];
+        int[] output = new int[n];
+        int[] count = new int[10];
 
         for (int i = 0; i < 10; i++) {
-            C[i] = 0;
+            count[i] = 0;
         }
 
         for (int j = 0; j < n; j++) {
-            int digit = (vet[j].intValue() / exp) % 10;
-            C[digit]++;
+            int digit = (vet[j] / exp) % 10;
+            count[digit]++;
         }
 
         for (int i = 1; i < 10; i++) {
-            C[i] = C[i] + C[i - 1];
+            count[i] = count[i] + count[i - 1];
         }
 
         for (int j = n - 1; j >= 0; j--) {
-            int digit = (vet[j].intValue() / exp) % 10;
-            B[C[digit] - 1] = vet[j];
-            C[digit]--;
+            int digit = (vet[j] / exp) % 10;
+            output[count[digit] - 1] = vet[j];
+            count[digit]--;
         }
 
         for (int i = 0; i < n; i++) {
-            vet[i] = B[i];
+            vet[i] = output[i];
         }
     }
 }
