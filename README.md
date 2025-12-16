@@ -11,7 +11,7 @@ O repositório está organizado em três diretórios principais, cada um contend
 | **[Trabalho_Pratico_001](./src/Trabalhos_Praticos/Trabalho_Pratico_001)** | Algoritmos de Ordenação | Implementação e análise de diferentes algoritmos de ordenação. |
 | **[Trabalho_Pratico_002](./src/Trabalhos_Praticos/Trabalho_Pratico_002)** | Algoritmos de Grafos | Implementação de algoritmos clássicos para manipulação e travessia de grafos. |
 | **[Trabalho_Prático_003](./src/Trabalhos_Praticos/Trabalho_Pratico_003)** | B-Trees e SGBD | Aplicação prática de estruturas de dados B-Trees para um sistema básico de controle de estoque. |
-
+ | **[Projects](./src/Projects)**                                            | Atividades de Aula | Implementações de atividades, exemplos e exercícios práticos realizados em sala de aula. |
 ---
 
 ## 🎯 Projetos em Destaque
