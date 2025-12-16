@@ -6,11 +6,11 @@ Este repositório contém uma coleção de projetos e trabalhos práticos desenv
 
 O repositório está organizado em três diretórios principais, cada um contendo o código-fonte, documentação e instruções específicas para o trabalho prático correspondente.
 
-| Diretório | Tópico Principal | Descrição |
-| :--- | :--- | :--- |
-| **[Trabalho Prático 001](./Trabalho%20Prático%20001)** | Algoritmos de Ordenação | Implementação e análise de diferentes algoritmos de ordenação. |
-| **[Trabalho Prático 002](./Trabalho%20Prático%20002)** | Algoritmos de Grafos | Implementação de algoritmos clássicos para manipulação e travessia de grafos. |
-| **[Trabalho Prático 003](./Trabalho%20Prático%20003)** | B-Trees e SGBD | Aplicação prática de estruturas de dados B-Trees para um sistema básico de controle de estoque. |
+| Diretório                                          | Tópico Principal | Descrição |
+|:---------------------------------------------------| :--- | :--- |
+| **[Trabalho_Pratico_001](./Trabalho_Pratico_001)** | Algoritmos de Ordenação | Implementação e análise de diferentes algoritmos de ordenação. |
+| **[Trabalho_Pratico_002](./Trabalho_Pratico_002)** | Algoritmos de Grafos | Implementação de algoritmos clássicos para manipulação e travessia de grafos. |
+| **[Trabalho_Prático_003](./Trabalho_Pratico_003)** | B-Trees e SGBD | Aplicação prática de estruturas de dados B-Trees para um sistema básico de controle de estoque. |
 
 ---
 
