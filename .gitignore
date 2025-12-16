@@ -16,7 +16,8 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 dados.txt
-
+dados_experimento.csv
+Grafos
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
